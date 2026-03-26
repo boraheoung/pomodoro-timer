@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_PATH=/data/pomodoro.db
+    volumes:
+      - ../src:/app/src        # 코드 핫리로드
+      - pomodoro_data:/data    # SQLite 영속 저장
+
+volumes:
+  pomodoro_data:

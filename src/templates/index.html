@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포모도로 타이머</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <h1>🍅 포모도로 타이머</h1>
+
+  <!-- Timer -->
+  <div class="timer-card">
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-mode="work">집중 25분</button>
+      <button class="mode-tab" data-mode="break">휴식 5분</button>
+    </div>
+
+    <svg id="tomato-svg" class="tomato-svg" viewBox="0 0 300 310">
+      <!-- Stem -->
+      <path d="M150,55 C148,38 156,26 153,16" stroke="#4caf50" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <!-- Leaves -->
+      <ellipse cx="133" cy="40" rx="21" ry="9" fill="#4caf50" transform="rotate(-38 133 40)"/>
+      <ellipse cx="167" cy="40" rx="21" ry="9" fill="#4caf50" transform="rotate(38 167 40)"/>
+      <!-- Tomato body -->
+      <circle id="tomato-body" cx="150" cy="175" r="120" fill="#e94560"/>
+      <!-- Highlight -->
+      <circle cx="112" cy="132" r="32" fill="rgba(255,255,255,0.07)"/>
+      <!-- Progress track -->
+      <circle cx="150" cy="175" r="120" fill="none" stroke="rgba(0,0,0,0.22)" stroke-width="11"/>
+      <!-- Progress ring -->
+      <circle id="progress-ring" cx="150" cy="175" r="120"
+        fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="11"
+        stroke-linecap="round"
+        stroke-dasharray="753.98 753.98"
+        stroke-dashoffset="0"
+        transform="rotate(-90 150 175)"/>
+      <!-- Timer text -->
+      <text id="timer-text" x="150" y="167" text-anchor="middle"
+        font-size="54" font-weight="700" fill="white"
+        font-family="'Segoe UI', system-ui, sans-serif">25:00</text>
+      <!-- Mode label -->
+      <text id="mode-text" x="150" y="208" text-anchor="middle"
+        font-size="15" fill="rgba(255,255,255,0.65)"
+        font-family="'Segoe UI', system-ui, sans-serif">집중</text>
+    </svg>
+
+    <input
+      id="label-input"
+      class="label-input"
+      type="text"
+      placeholder="작업 이름 (선택)"
+      maxlength="60"
+    />
+
+    <div class="timer-controls">
+      <button id="btn-start" class="btn btn-primary">시작</button>
+      <button id="btn-reset" class="btn btn-secondary" disabled>초기화</button>
+    </div>
+  </div>
+
+  <!-- Today stats -->
+  <div class="stats-bar">
+    <div class="stat-box">
+      <div id="stat-sessions" class="value">0</div>
+      <div class="label">오늘 세션</div>
+    </div>
+    <div class="stat-box">
+      <div id="stat-minutes" class="value">0</div>
+      <div class="label">오늘 집중(분)</div>
+    </div>
+  </div>
+
+  <!-- History -->
+  <section class="history-section">
+    <h2>기록</h2>
+    <div id="history-list" class="history-list">
+      <p class="empty-state">아직 기록이 없습니다</p>
+    </div>
+  </section>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
